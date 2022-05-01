@@ -9,6 +9,12 @@ export default handleAuth({
       // console.log('Logging in');
       // Pass custom parameters to login
       await handleLogin(req, res, {
+        authorizationParams: {
+          audience: 'https://trackyourbudget/api', // or AUTH0_AUDIENCE
+          // Add the `offline_access` scope to also get a Refresh Token
+          scope: 'openid profile email read:budgets', // or AUTH0_SCOPE
+          // permissions: '' 
+        },
         returnTo: '/hello'
       });
     } catch (error) {
