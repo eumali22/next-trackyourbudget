@@ -7,8 +7,8 @@ export default function ApiTest() {
         <a>Back to Home</a>
       </Link>
       <br />
-      <Link href="/api/budgets">
-        <a>Budgets JSON</a>
+      <Link href="/budgets">
+        <a>List of Budgets</a>
       </Link>
       <br />
       <Link href="/accesstoken">
@@ -23,4 +23,3 @@ export default function ApiTest() {
     </>
   );
 }
-
