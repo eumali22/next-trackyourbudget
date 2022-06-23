@@ -22,16 +22,24 @@ export default withPageAuthRequired(function Budgets() {
     <Link href="/hello">
       <a>Hello World</a>
     </Link>
+    <Link href="/budget">
+      <a>Create Budget</a>
+    </Link>
     <br />
     <div>{
       data.map((budget) => {
-        return <Budget budgetName={budget.budget_name} budgetId={budget.SK.split("budget_")[1]} />
+        const id = budget.SK.split("budget_")[1];
+        return <BudgetLine 
+          budgetName={budget.budget_name}
+          budgetId={id}
+          key={id}
+        />
       })}
     </div>
   </>);
 });
 
-function Budget({ budgetId, budgetName }) {
+function BudgetLine({ budgetId, budgetName }) {
   return (
     <div>
       <div>Budget Id: {budgetId}</div>

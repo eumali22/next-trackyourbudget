@@ -12,7 +12,7 @@ export default handleAuth({
         authorizationParams: {
           audience: 'https://trackyourbudget/api', // or AUTH0_AUDIENCE
           // Add the `offline_access` scope to also get a Refresh Token
-          scope: 'openid profile email read:budgets', // or AUTH0_SCOPE
+          scope: 'openid profile email read:budgets create:budgets', // or AUTH0_SCOPE
           // permissions: '' 
         },
         returnTo: '/hello'
