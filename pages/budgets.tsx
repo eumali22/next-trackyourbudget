@@ -1,6 +1,6 @@
 import useSWR, { Fetcher } from 'swr';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
-import Link from 'next/link';
+import MainMenu from '../components/mainMenu';
 
 type BudgetData = { budget_name: string, SK: string };
 
@@ -15,17 +15,7 @@ export default withPageAuthRequired(function Budgets() {
   if (data === undefined) return <div>Loading...</div>;
 
   return (<>
-    <Link href="/">
-      <a>Back to Home</a>
-    </Link>
-    <br />
-    <Link href="/hello">
-      <a>Hello World</a>
-    </Link>
-    <Link href="/budget">
-      <a>Create Budget</a>
-    </Link>
-    <br />
+    <MainMenu />
     <div>{
       data.map((budget) => {
         const id = budget.SK.split("budget_")[1];

@@ -26,10 +26,10 @@ export default function Home() {
             </a>
           </Link>
 
-          <Link href="/apitest">
+          <Link href="/budgets">
             <a className="card">
-              <h3>Test APIs &rarr;</h3>
-              <p>Call/test Track Your Budget API endpoints.</p>
+              <h3>Your Budgets &rarr;</h3>
+              <p>List of your budgets. Login required.</p>
             </a>
           </Link>
           

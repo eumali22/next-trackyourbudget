@@ -1,27 +1,15 @@
+import { useRouter } from "next/router";
+import MainMenu from "./mainMenu";
 
-// export default function Budget(props: { budgetId: string, budgetName: string }) {
-//   return (<>
-//     {props.budgetId && <BudgetRead {...props} />} 
-//     {!props.budgetId && <BudgetEdit />}
-//   </>);
-// };
-
-
-// function BudgetRead({ budgetId, budgetName }) {
-//   return (<>
-//     <div>Budget Id: {budgetId}</div>
-//     <div>Budget Name: {budgetName}</div>
-//   </>);
-// }
 
 export default function BudgetForm() {
-  const handleSubmit = async (event) => {
+  const router = useRouter();
+
+  const handleSubmit = async (event: any) => {
     event.preventDefault(); // Stop the form from submitting and refreshing the page.
 
     // Get data from the form.
-    const data = {
-      first: event.target.budget_name.value
-    }
+    const data = { 'budget_name': event.target.budget_name.value }
 
     const JSONdata = JSON.stringify(data);
     const endpoint = '/api/budget';
@@ -38,10 +26,12 @@ export default function BudgetForm() {
     const response = await fetch(endpoint, options);
 
     const result = await response.json();
-    alert(`Post result: ${result.data}`);
+    alert(`Record created: ${JSON.stringify(result)}`);
+    router.push('/budgets');
   }
 
   return (<>
+    <MainMenu />
     <form onSubmit={handleSubmit}>
       <label htmlFor="budget_name">Budget name:</label>
       <input required type="text" id="budget_name" name="budget_name" />

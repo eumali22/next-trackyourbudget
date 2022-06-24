@@ -10,11 +10,10 @@ export default withApiAuthRequired(async function budget(req, res) {
   const response = await fetch('http://localhost:8626/budgets/', {
     method: 'POST',
     headers: {
-      // 'Content-Type': 'application/json',
-      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: req.body
+    body: JSON.stringify(req.body)
   });
   const products = await response.json();
   res.status(200).json(products);
